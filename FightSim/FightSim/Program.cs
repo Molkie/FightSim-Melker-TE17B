@@ -6,18 +6,41 @@ namespace FightSim
     {
         static void Main(string[] args)
         {
-            //Array som samlar de båda fighters.
-
-            Console.WriteLine("Hello planet");
+            //Introduktion
+            Console.WriteLine("Hello and welcome to this fighting simulator. First you must create two fighters.");
             //Kallar metoden CreateFighter 2 gånger, en för varge fighter. Lagrar resultatet i instanserna fighter 1 och 2.
             Fighter fighter1 = CreateFighter();
             Fighter fighter2 = CreateFighter();
             //Skapar en array att spara dessa fighters i.
             Fighter[] roster = { fighter1, fighter2 };
 
+            Console.WriteLine(roster[0].name);
+            Console.WriteLine(roster[1].name);
 
+            //Kallar metoden gameround med båda fighters osm parametrar
+            GameRound(fighter1, fighter2);
 
             Console.ReadLine();
+        }
+
+        //Metod som tar fighter1 och 2 som parametrar och sparar dessa i f1 och f2
+        static void GameRound(Fighter f1, Fighter f2)
+        {
+            //Loop som körs så länge båda fighters lever
+            while (f1.isAlive() == true && f2.isAlive() == true)
+            {
+                //fighter1 (f1) börjar med att slå fighter2 (f2)
+                //Sparar skadan som fighter1 gör i inten dmg1
+                int dmg1 = f1.Attack();
+                //Kallar metoden Hurt i fighter2 med dmg1 som parameter
+                f2.Hurt(dmg1);
+
+                //fighter2 (f2) slår sedan fighter1 (f1)
+                //Sparar skadan som fighter2 gör i inten dmg2
+                int dmg2 = f1.Attack();
+                //Kallar metoden Hurt i fighter1 med dmg2 som parameter
+                f2.Hurt(dmg2);
+            }
         }
 
 
