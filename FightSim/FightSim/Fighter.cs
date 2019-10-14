@@ -6,12 +6,15 @@ namespace FightSim
 {
     class Fighter
     {
-        int hp;
+        int hp = 50;
         public string name;
+        Random generator = new Random();
+        
 
         public int Attack()
         {
-            int dmg = 5;
+            //Slumpar ett tal mellan 1 och 10 som blir skadan.
+            int dmg = generator.Next(0, 11);
             return (dmg);
         }
 
