@@ -54,6 +54,7 @@ namespace FightSim
                 //Rensar upp i konsollen
                 Console.Clear();
             }
+            //Kollar vilken av mina fighters som lever och skriver sedan ut vem som är segraren.
             //Hämtar hp från båda fighters
             bool living = f1.isAlive();
             if(living == true)
@@ -75,6 +76,7 @@ namespace FightSim
             //Instruktioner till användaren
             Console.WriteLine("Please type a name for the fighter: ");
             fighter.name = Console.ReadLine().Trim();
+            //Returnerar fighter
             return fighter;
         }
     }
